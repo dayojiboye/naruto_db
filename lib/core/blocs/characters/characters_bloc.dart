@@ -41,6 +41,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
                     status: ViewStatus.success,
                     characters: List.of(state.characters)
                       ..addAll(characters.characters),
+                    currentPage: characters.currentPage,
                   ),
                 );
         } catch (e) {

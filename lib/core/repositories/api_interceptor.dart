@@ -38,7 +38,7 @@ FutureOr<dynamic> onResponse(
 }
 
 @override
-FutureOr<dynamic> onError(DioException dioError) {
+dynamic onError(DioException dioError) {
   switch (dioError.type) {
     case DioExceptionType.cancel:
       dioError.error = "Request to API server was cancelled";

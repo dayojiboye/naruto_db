@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:naruto_db/core/models/characters/characters.dart';
-
-// import 'api_interceptor.dart';
+import 'package:naruto_db/core/repositories/api_exception.dart';
+// import 'package:naruto_db/core/repositories/api_interceptor.dart';
 
 class ApiRepository {
-  static const baseUrl = 'https://narutodb.xyz/api/';
+  static const baseUrl = 'https://www.narutodb.xyz/api/';
   late Dio dio;
 
   ApiRepository() {
@@ -23,9 +23,9 @@ class ApiRepository {
     try {
       final response = await dio.get(url);
       return Characters.fromJson(response.data);
-    } on DioException catch (e) {
-      print(e.message);
-      throw e.error!;
+    } on Exception catch (e) {
+      // print(e);
+      throw CustomException.fromDioException(e).message;
     }
   }
 }
