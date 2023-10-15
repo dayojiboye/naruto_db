@@ -25,7 +25,7 @@ mixin _$Character {
   List<String>? get images => throw _privateConstructorUsedError;
   Debut? get debut => throw _privateConstructorUsedError;
   List<String>? get jutsu => throw _privateConstructorUsedError;
-  Personal? get personal => throw _privateConstructorUsedError;
+  dynamic? get personal => throw _privateConstructorUsedError;
   List<String>? get uniqueTraits => throw _privateConstructorUsedError;
   Family? get family => throw _privateConstructorUsedError;
   List<String>? get natureType => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $CharacterCopyWith<$Res> {
       List<String>? images,
       Debut? debut,
       List<String>? jutsu,
-      Personal? personal,
+      dynamic? personal,
       List<String>? uniqueTraits,
       Family? family,
       List<String>? natureType,
@@ -59,7 +59,6 @@ abstract class $CharacterCopyWith<$Res> {
       List<String>? tools});
 
   $DebutCopyWith<$Res>? get debut;
-  $PersonalCopyWith<$Res>? get personal;
   $FamilyCopyWith<$Res>? get family;
   $RankCopyWith<$Res>? get rank;
   $VoiceActorsCopyWith<$Res>? get voiceActors;
@@ -115,7 +114,7 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
       personal: freezed == personal
           ? _value.personal
           : personal // ignore: cast_nullable_to_non_nullable
-              as Personal?,
+              as dynamic?,
       uniqueTraits: freezed == uniqueTraits
           ? _value.uniqueTraits
           : uniqueTraits // ignore: cast_nullable_to_non_nullable
@@ -157,15 +156,15 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
 
   @override
   @pragma('vm:prefer-inline')
-  $PersonalCopyWith<$Res>? get personal {
-    if (_value.personal == null) {
-      return null;
-    }
+  // $PersonalCopyWith<$Res>? get personal {
+  //   if (_value.personal == null) {
+  //     return null;
+  //   }
 
-    return $PersonalCopyWith<$Res>(_value.personal!, (value) {
-      return _then(_value.copyWith(personal: value) as $Val);
-    });
-  }
+  //   return $PersonalCopyWith<$Res>(_value.personal!, (value) {
+  //     return _then(_value.copyWith(personal: value) as $Val);
+  //   });
+  // }
 
   @override
   @pragma('vm:prefer-inline')
@@ -218,7 +217,7 @@ abstract class _$$CharacterImplCopyWith<$Res>
       List<String>? images,
       Debut? debut,
       List<String>? jutsu,
-      Personal? personal,
+      dynamic? personal,
       List<String>? uniqueTraits,
       Family? family,
       List<String>? natureType,
@@ -228,8 +227,8 @@ abstract class _$$CharacterImplCopyWith<$Res>
 
   @override
   $DebutCopyWith<$Res>? get debut;
-  @override
-  $PersonalCopyWith<$Res>? get personal;
+  // @override
+  // $PersonalCopyWith<$Res>? get personal;
   @override
   $FamilyCopyWith<$Res>? get family;
   @override
@@ -286,7 +285,7 @@ class __$$CharacterImplCopyWithImpl<$Res>
       personal: freezed == personal
           ? _value.personal
           : personal // ignore: cast_nullable_to_non_nullable
-              as Personal?,
+              as dynamic?,
       uniqueTraits: freezed == uniqueTraits
           ? _value._uniqueTraits
           : uniqueTraits // ignore: cast_nullable_to_non_nullable
@@ -345,6 +344,7 @@ class _$CharacterImpl implements _Character {
   @override
   final String? name;
   final List<String>? _images;
+  final dynamic? personal;
   @override
   List<String>? get images {
     final value = _images;
@@ -367,7 +367,7 @@ class _$CharacterImpl implements _Character {
   }
 
   @override
-  final Personal? personal;
+  // final Personal? personal;
   final List<String>? _uniqueTraits;
   @override
   List<String>? get uniqueTraits {
@@ -406,7 +406,7 @@ class _$CharacterImpl implements _Character {
 
   @override
   String toString() {
-    return 'Character(id: $id, name: $name, images: $images, debut: $debut, jutsu: $jutsu, personal: $personal, uniqueTraits: $uniqueTraits, family: $family, natureType: $natureType, rank: $rank, voiceActors: $voiceActors, tools: $tools)';
+    return 'Character(id: $id, name: $name, images: $images, debut: $debut, jutsu: $jutsu, uniqueTraits: $uniqueTraits, family: $family, natureType: $natureType, rank: $rank, voiceActors: $voiceActors, tools: $tools)';
   }
 
   @override
@@ -419,8 +419,6 @@ class _$CharacterImpl implements _Character {
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.debut, debut) || other.debut == debut) &&
             const DeepCollectionEquality().equals(other._jutsu, _jutsu) &&
-            (identical(other.personal, personal) ||
-                other.personal == personal) &&
             const DeepCollectionEquality()
                 .equals(other._uniqueTraits, _uniqueTraits) &&
             (identical(other.family, family) || other.family == family) &&
@@ -470,7 +468,7 @@ abstract class _Character implements Character {
       final List<String>? images,
       final Debut? debut,
       final List<String>? jutsu,
-      final Personal? personal,
+      final dynamic? personal,
       final List<String>? uniqueTraits,
       final Family? family,
       final List<String>? natureType,
@@ -492,7 +490,7 @@ abstract class _Character implements Character {
   @override
   List<String>? get jutsu;
   @override
-  Personal? get personal;
+  dynamic? get personal;
   @override
   List<String>? get uniqueTraits;
   @override

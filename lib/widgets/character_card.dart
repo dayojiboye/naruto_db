@@ -42,18 +42,18 @@ class _CharacterCardState extends State<CharacterCard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 40,
-              backgroundColor: const Color.fromRGBO(204, 204, 204, 1),
-              backgroundImage: NetworkImage(
-                isAvatarError
-                    ? "https://via.placeholder.com/150?text=${widget.name}"
-                    : widget.image,
-              ),
-              onBackgroundImageError: (exception, stackTrace) => setState(() {
-                isAvatarError = true;
-              }),
-            ),
+            // CircleAvatar(
+            //   radius: 40,
+            //   backgroundColor: const Color.fromRGBO(204, 204, 204, 1),
+            //   backgroundImage: NetworkImage(
+            //     isAvatarError
+            //         ? "https://via.placeholder.com/150?text=${widget.name}"
+            //         : widget.image,
+            //   ),
+            //   onBackgroundImageError: (exception, stackTrace) => setState(() {
+            //     isAvatarError = true;
+            //   }),
+            // ),
             const YMargin(12),
             Text(
               widget.name,

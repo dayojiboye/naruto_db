@@ -4,7 +4,7 @@ import 'package:naruto_db/core/repositories/api_exception.dart';
 // import 'package:naruto_db/core/repositories/api_interceptor.dart';
 
 class ApiRepository {
-  static const baseUrl = 'https://www.narutodb.xyz/api/';
+  static const baseUrl = 'https://narutodb.xyz/api/';
   late Dio dio;
 
   ApiRepository() {
@@ -18,13 +18,16 @@ class ApiRepository {
     // dio.interceptors.add(ApiInterceptor());
   }
 
-  Future<Characters> getAllCharacters([int currentPage = 1]) async {
-    final url = 'character?page=$currentPage&limit=20';
+  Future<Characters> getAllCharacters([int page = 1]) async {
+    // print(page);
+    final url = 'character?page=$page&limit=20';
     try {
       final response = await dio.get(url);
+      // log(Characters.fromJson(response.data).toString());
+      // print()
       return Characters.fromJson(response.data);
     } on Exception catch (e) {
-      // print(e);
+      print(e);
       throw CustomException.fromDioException(e).message;
     }
   }

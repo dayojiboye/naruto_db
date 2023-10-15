@@ -1,17 +1,15 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'personal.dart';
+// part of 'personal.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+// // **************************************************************************
+// // JsonSerializableGenerator
+// // **************************************************************************
 
-_$PersonalImpl _$$PersonalImplFromJson(Map<String, dynamic> json) =>
-    _$PersonalImpl(
-      species: json['species'] as String?,
-    );
+// _$PersonalImpl _$$PersonalImplFromJson(dynamic json) => _$PersonalImpl(
+//       species: json['species'] as String?,
+//     );
 
-Map<String, dynamic> _$$PersonalImplToJson(_$PersonalImpl instance) =>
-    <String, dynamic>{
-      'species': instance.species,
-    };
+// dynamic _$$PersonalImplToJson(_$PersonalImpl instance) => <String, dynamic>{
+//       'species': instance.species,
+//     };

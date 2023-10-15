@@ -17,9 +17,7 @@ _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
           : Debut.fromJson(json['debut'] as Map<String, dynamic>),
       jutsu:
           (json['jutsu'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      personal: json['personal'] == null
-          ? null
-          : Personal.fromJson(json['personal'] as Map<String, dynamic>),
+      personal: json['personal'] == null ? null : json['personal'] as dynamic,
       uniqueTraits: (json['uniqueTraits'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),

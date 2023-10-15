@@ -18,17 +18,37 @@ class CharactersScreen extends StatefulWidget {
 
 class _CharactersScreenState extends State<CharactersScreen> {
   final TextEditingController _searchTextController = TextEditingController();
+  final _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
 
   @override
   void dispose() {
     _searchTextController.dispose();
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
     super.dispose();
+  }
+
+  bool get _isBottom {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.offset;
+    return currentScroll >= (maxScroll * 0.9);
+  }
+
+  void _onScroll() {
+    if (_isBottom) context.read<CharactersBloc>().add(FetchCharacters());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.grey[200],
       body: BlocBuilder<CharactersBloc, CharactersState>(
         builder: (context, state) {
           switch (state.status) {
@@ -77,6 +97,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
                     const YMargin(24),
                     Expanded(
                       child: GridView.builder(
+                        controller: _scrollController,
                         shrinkWrap: true,
                         padding: const EdgeInsets.only(
                           left: 16,
@@ -90,6 +111,9 @@ class _CharactersScreenState extends State<CharactersScreen> {
                           mainAxisSpacing: 12,
                           crossAxisSpacing: 12,
                         ),
+                        // itemCount: state.hasReachedMax
+                        //     ? state.characters.length
+                        //     : state.characters.length + 1,
                         itemCount: state.characters.length,
                         itemBuilder: (context, index) {
                           return CharacterCard(

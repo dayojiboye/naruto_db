@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'debut.dart';
 import 'family.dart';
-import 'personal.dart';
+// import 'personal.dart';
 import 'rank.dart';
 import 'voice_actors.dart';
 
@@ -17,7 +17,8 @@ class Character with _$Character {
     List<String>? images,
     Debut? debut,
     List<String>? jutsu,
-    Personal? personal,
+    // Personal? personal,
+    dynamic personal,
     List<String>? uniqueTraits,
     Family? family,
     List<String>? natureType,

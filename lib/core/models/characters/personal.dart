@@ -1,14 +1,13 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+// import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'personal.freezed.dart';
-part 'personal.g.dart';
+// part 'personal.freezed.dart';
+// part 'personal.g.dart';
 
-@freezed
-class Personal with _$Personal {
-  factory Personal({
-    String? species,
-  }) = _Personal;
+// @freezed
+// class Personal with _$Personal {
+//   factory Personal({
+//     String? species,
+//   }) = _Personal;
 
-  factory Personal.fromJson(Map<String, dynamic> json) =>
-      _$PersonalFromJson(json);
-}
+//   factory Personal.fromJson(dynamic json) => _$PersonalFromJson(json);
+// }

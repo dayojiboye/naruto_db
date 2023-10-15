@@ -5,7 +5,7 @@ final class CharactersState extends Equatable {
     this.status = ViewStatus.initial,
     this.characters = const <Character>[],
     this.hasReachedMax = false,
-    this.currentPage = 0,
+    this.currentPage = 1,
   });
 
   final ViewStatus status;
@@ -29,9 +29,9 @@ final class CharactersState extends Equatable {
 
   @override
   String toString() {
-    return '''CharactersState { status: $status, hasReachedMax: $hasReachedMax, characters: $characters }''';
+    return '''CharactersState { currentPage: $currentPage, status: $status, hasReachedMax: $hasReachedMax, characters: $characters }''';
   }
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [status, hasReachedMax, characters, currentPage];
 }
