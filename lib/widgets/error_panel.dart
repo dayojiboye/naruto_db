@@ -29,7 +29,7 @@ class ErrorPanel extends StatelessWidget {
           ),
           const YMargin(8),
           Button(
-            label: "Try again",
+            label: "Retry",
             onPressed: onRefetch,
           )
         ],

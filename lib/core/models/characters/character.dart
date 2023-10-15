@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'debut.dart';
-import 'family.dart';
+// import 'family.dart';
 // import 'personal.dart';
-import 'rank.dart';
-import 'voice_actors.dart';
+// import 'rank.dart';
+// import 'voice_actors.dart';
 
 part 'character.freezed.dart';
 part 'character.g.dart';
@@ -17,13 +17,12 @@ class Character with _$Character {
     List<String>? images,
     Debut? debut,
     List<String>? jutsu,
-    // Personal? personal,
     dynamic personal,
     List<String>? uniqueTraits,
-    Family? family,
+    dynamic family,
     List<String>? natureType,
-    Rank? rank,
-    VoiceActors? voiceActors,
+    dynamic rank,
+    dynamic voiceActors,
     List<String>? tools,
   }) = _Character;
 

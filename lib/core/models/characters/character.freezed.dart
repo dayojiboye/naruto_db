@@ -27,10 +27,10 @@ mixin _$Character {
   List<String>? get jutsu => throw _privateConstructorUsedError;
   dynamic? get personal => throw _privateConstructorUsedError;
   List<String>? get uniqueTraits => throw _privateConstructorUsedError;
-  Family? get family => throw _privateConstructorUsedError;
+  dynamic? get family => throw _privateConstructorUsedError;
   List<String>? get natureType => throw _privateConstructorUsedError;
-  Rank? get rank => throw _privateConstructorUsedError;
-  VoiceActors? get voiceActors => throw _privateConstructorUsedError;
+  dynamic? get rank => throw _privateConstructorUsedError;
+  dynamic? get voiceActors => throw _privateConstructorUsedError;
   List<String>? get tools => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,16 +52,13 @@ abstract class $CharacterCopyWith<$Res> {
       List<String>? jutsu,
       dynamic? personal,
       List<String>? uniqueTraits,
-      Family? family,
+      dynamic? family,
       List<String>? natureType,
-      Rank? rank,
-      VoiceActors? voiceActors,
+      dynamic? rank,
+      dynamic? voiceActors,
       List<String>? tools});
 
   $DebutCopyWith<$Res>? get debut;
-  $FamilyCopyWith<$Res>? get family;
-  $RankCopyWith<$Res>? get rank;
-  $VoiceActorsCopyWith<$Res>? get voiceActors;
 }
 
 /// @nodoc
@@ -122,7 +119,7 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
       family: freezed == family
           ? _value.family
           : family // ignore: cast_nullable_to_non_nullable
-              as Family?,
+              as dynamic?,
       natureType: freezed == natureType
           ? _value.natureType
           : natureType // ignore: cast_nullable_to_non_nullable
@@ -130,11 +127,11 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
       rank: freezed == rank
           ? _value.rank
           : rank // ignore: cast_nullable_to_non_nullable
-              as Rank?,
+              as dynamic?,
       voiceActors: freezed == voiceActors
           ? _value.voiceActors
           : voiceActors // ignore: cast_nullable_to_non_nullable
-              as VoiceActors?,
+              as dynamic?,
       tools: freezed == tools
           ? _value.tools
           : tools // ignore: cast_nullable_to_non_nullable
@@ -154,8 +151,8 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
     });
   }
 
-  @override
-  @pragma('vm:prefer-inline')
+  // @override
+  // @pragma('vm:prefer-inline')
   // $PersonalCopyWith<$Res>? get personal {
   //   if (_value.personal == null) {
   //     return null;
@@ -166,41 +163,41 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   //   });
   // }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $FamilyCopyWith<$Res>? get family {
-    if (_value.family == null) {
-      return null;
-    }
+  // @override
+  // @pragma('vm:prefer-inline')
+  // $FamilyCopyWith<$Res>? get family {
+  //   if (_value.family == null) {
+  //     return null;
+  //   }
 
-    return $FamilyCopyWith<$Res>(_value.family!, (value) {
-      return _then(_value.copyWith(family: value) as $Val);
-    });
-  }
+  //   return $FamilyCopyWith<$Res>(_value.family!, (value) {
+  //     return _then(_value.copyWith(family: value) as $Val);
+  //   });
+  // }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $RankCopyWith<$Res>? get rank {
-    if (_value.rank == null) {
-      return null;
-    }
+  // @override
+  // @pragma('vm:prefer-inline')
+  // $RankCopyWith<$Res>? get rank {
+  //   if (_value.rank == null) {
+  //     return null;
+  //   }
 
-    return $RankCopyWith<$Res>(_value.rank!, (value) {
-      return _then(_value.copyWith(rank: value) as $Val);
-    });
-  }
+  //   return $RankCopyWith<$Res>(_value.rank!, (value) {
+  //     return _then(_value.copyWith(rank: value) as $Val);
+  //   });
+  // }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $VoiceActorsCopyWith<$Res>? get voiceActors {
-    if (_value.voiceActors == null) {
-      return null;
-    }
+  // @override
+  // @pragma('vm:prefer-inline')
+  // $VoiceActorsCopyWith<$Res>? get voiceActors {
+  //   if (_value.voiceActors == null) {
+  //     return null;
+  //   }
 
-    return $VoiceActorsCopyWith<$Res>(_value.voiceActors!, (value) {
-      return _then(_value.copyWith(voiceActors: value) as $Val);
-    });
-  }
+  //   return $VoiceActorsCopyWith<$Res>(_value.voiceActors!, (value) {
+  //     return _then(_value.copyWith(voiceActors: value) as $Val);
+  //   });
+  // }
 }
 
 /// @nodoc
@@ -219,22 +216,22 @@ abstract class _$$CharacterImplCopyWith<$Res>
       List<String>? jutsu,
       dynamic? personal,
       List<String>? uniqueTraits,
-      Family? family,
+      dynamic? family,
       List<String>? natureType,
-      Rank? rank,
-      VoiceActors? voiceActors,
+      dynamic? rank,
+      dynamic? voiceActors,
       List<String>? tools});
 
   @override
   $DebutCopyWith<$Res>? get debut;
   // @override
   // $PersonalCopyWith<$Res>? get personal;
-  @override
-  $FamilyCopyWith<$Res>? get family;
-  @override
-  $RankCopyWith<$Res>? get rank;
-  @override
-  $VoiceActorsCopyWith<$Res>? get voiceActors;
+  // @override
+  // $FamilyCopyWith<$Res>? get family;
+  // @override
+  // $RankCopyWith<$Res>? get rank;
+  // @override
+  // $VoiceActorsCopyWith<$Res>? get voiceActors;
 }
 
 /// @nodoc
@@ -293,7 +290,7 @@ class __$$CharacterImplCopyWithImpl<$Res>
       family: freezed == family
           ? _value.family
           : family // ignore: cast_nullable_to_non_nullable
-              as Family?,
+              as dynamic?,
       natureType: freezed == natureType
           ? _value._natureType
           : natureType // ignore: cast_nullable_to_non_nullable
@@ -301,11 +298,11 @@ class __$$CharacterImplCopyWithImpl<$Res>
       rank: freezed == rank
           ? _value.rank
           : rank // ignore: cast_nullable_to_non_nullable
-              as Rank?,
+              as dynamic?,
       voiceActors: freezed == voiceActors
           ? _value.voiceActors
           : voiceActors // ignore: cast_nullable_to_non_nullable
-              as VoiceActors?,
+              as dynamic?,
       tools: freezed == tools
           ? _value._tools
           : tools // ignore: cast_nullable_to_non_nullable
@@ -379,7 +376,7 @@ class _$CharacterImpl implements _Character {
   }
 
   @override
-  final Family? family;
+  final dynamic? family;
   final List<String>? _natureType;
   @override
   List<String>? get natureType {
@@ -391,9 +388,9 @@ class _$CharacterImpl implements _Character {
   }
 
   @override
-  final Rank? rank;
+  final dynamic? rank;
   @override
-  final VoiceActors? voiceActors;
+  final dynamic? voiceActors;
   final List<String>? _tools;
   @override
   List<String>? get tools {
@@ -470,10 +467,10 @@ abstract class _Character implements Character {
       final List<String>? jutsu,
       final dynamic? personal,
       final List<String>? uniqueTraits,
-      final Family? family,
+      final dynamic? family,
       final List<String>? natureType,
-      final Rank? rank,
-      final VoiceActors? voiceActors,
+      final dynamic? rank,
+      final dynamic? voiceActors,
       final List<String>? tools}) = _$CharacterImpl;
 
   factory _Character.fromJson(Map<String, dynamic> json) =
@@ -494,13 +491,13 @@ abstract class _Character implements Character {
   @override
   List<String>? get uniqueTraits;
   @override
-  Family? get family;
+  dynamic? get family;
   @override
   List<String>? get natureType;
   @override
-  Rank? get rank;
+  dynamic? get rank;
   @override
-  VoiceActors? get voiceActors;
+  dynamic? get voiceActors;
   @override
   List<String>? get tools;
   @override

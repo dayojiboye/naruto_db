@@ -19,7 +19,6 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
 
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   final ApiRepository apiRepository;
-  // To-Do: add refetchLoading to state
 
   CharactersBloc({required this.apiRepository})
       : super(const CharactersState()) {
@@ -36,6 +35,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
                 characters: characters.characters,
                 hasReachedMax: false,
                 currentPage: characters.currentPage,
+                isLoadingMore: true,
               ),
             );
           }
@@ -43,9 +43,11 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
           final characters =
               await apiRepository.getAllCharacters(state.currentPage + 1);
 
-          return characters.currentPage == characters.pageSize
-              // characters.characters.isEmpty
-              ? emit(state.copyWith(hasReachedMax: true))
+          return characters.characters.isEmpty
+              ? emit(state.copyWith(
+                  hasReachedMax: true,
+                  isLoadingMore: false,
+                ))
               : emit(
                   state.copyWith(
                     status: ViewStatus.success,
@@ -53,12 +55,18 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
                       ..addAll(characters.characters),
                     currentPage: characters.currentPage,
                     hasReachedMax: false,
+                    isLoadingMore: true,
                   ),
                 );
         } catch (e) {
           // To-Do: implement load more error
           print(e);
-          emit(state.copyWith(status: ViewStatus.failure));
+          emit(
+            state.copyWith(
+              status: ViewStatus.failure,
+              currentPage: 0,
+            ),
+          );
         }
       },
       transformer: throttleDroppable(throttleDuration),

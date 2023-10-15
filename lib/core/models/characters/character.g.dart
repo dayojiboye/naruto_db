@@ -21,18 +21,13 @@ _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
       uniqueTraits: (json['uniqueTraits'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      family: json['family'] == null
-          ? null
-          : Family.fromJson(json['family'] as Map<String, dynamic>),
+      family: json['family'] == null ? null : json['family'] as dynamic,
       natureType: (json['natureType'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      rank: json['rank'] == null
-          ? null
-          : Rank.fromJson(json['rank'] as Map<String, dynamic>),
-      voiceActors: json['voiceActors'] == null
-          ? null
-          : VoiceActors.fromJson(json['voiceActors'] as Map<String, dynamic>),
+      rank: json['rank'] == null ? null : json['rank'] as dynamic,
+      voiceActors:
+          json['voiceActors'] == null ? null : json['voiceActors'] as dynamic,
       tools:
           (json['tools'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );

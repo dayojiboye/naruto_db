@@ -6,24 +6,28 @@ final class CharactersState extends Equatable {
     this.characters = const <Character>[],
     this.hasReachedMax = false,
     this.currentPage = 1,
+    this.isLoadingMore = false,
   });
 
   final ViewStatus status;
   final List<Character> characters;
   final bool hasReachedMax;
   final int currentPage;
+  final bool isLoadingMore;
 
   CharactersState copyWith({
     ViewStatus? status,
     List<Character>? characters,
     bool? hasReachedMax,
     int? currentPage,
+    bool? isLoadingMore,
   }) {
     return CharactersState(
       status: status ?? this.status,
       characters: characters ?? this.characters,
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
       currentPage: currentPage ?? this.currentPage,
+      isLoadingMore: isLoadingMore ?? this.isLoadingMore,
     );
   }
 
@@ -33,5 +37,11 @@ final class CharactersState extends Equatable {
   }
 
   @override
-  List<Object> get props => [status, hasReachedMax, characters, currentPage];
+  List<Object> get props => [
+        status,
+        hasReachedMax,
+        characters,
+        currentPage,
+        isLoadingMore,
+      ];
 }

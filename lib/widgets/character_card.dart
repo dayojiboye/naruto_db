@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:naruto_db/utils/margin.dart';
 import 'package:naruto_db/utils/theme.dart';
+import "package:cached_network_image/cached_network_image.dart";
 
 class CharacterCard extends StatefulWidget {
   const CharacterCard({
@@ -42,18 +43,25 @@ class _CharacterCardState extends State<CharacterCard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // CircleAvatar(
-            //   radius: 40,
-            //   backgroundColor: const Color.fromRGBO(204, 204, 204, 1),
-            //   backgroundImage: NetworkImage(
-            //     isAvatarError
-            //         ? "https://via.placeholder.com/150?text=${widget.name}"
-            //         : widget.image,
-            //   ),
-            //   onBackgroundImageError: (exception, stackTrace) => setState(() {
-            //     isAvatarError = true;
-            //   }),
-            // ),
+            CachedNetworkImage(
+              imageUrl: isAvatarError
+                  ? "https://via.placeholder.com/150?text=${widget.name}"
+                  : widget.image,
+              width: 80,
+              height: 80,
+              errorListener: (value) => setState(() {
+                isAvatarError = true;
+              }),
+              imageBuilder: (context, imageProvider) => Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image:
+                      DecorationImage(image: imageProvider, fit: BoxFit.cover),
+                ),
+              ),
+            ),
             const YMargin(12),
             Text(
               widget.name,
