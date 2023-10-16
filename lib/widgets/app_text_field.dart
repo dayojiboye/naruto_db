@@ -19,6 +19,13 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final OutlineInputBorder inputBorder = OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: kMuted,
+      ),
+      borderRadius: BorderRadius.circular(4),
+    );
+
     return TextField(
       autofocus: false,
       enabled: enabled,
@@ -35,18 +42,9 @@ class AppTextField extends StatelessWidget {
         hintStyle: const TextStyle(
           fontSize: 14,
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: kMuted,
-          ),
-          borderRadius: BorderRadius.circular(4),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4),
-          borderSide: const BorderSide(
-            color: kMuted,
-          ),
-        ),
+        focusedBorder: inputBorder,
+        enabledBorder: inputBorder,
+        disabledBorder: inputBorder,
       ),
       onChanged: onChanged,
     );

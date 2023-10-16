@@ -4,7 +4,7 @@ import 'package:naruto_db/core/models/characters/characters.dart';
 import 'package:naruto_db/core/repositories/api_interceptor.dart';
 
 class ApiRepository {
-  static const baseUrl = 'https://narutodb.xyz/api/';
+  static const baseUrl = 'https://www.narutodb.xyz/api/';
   late Dio dio;
 
   ApiRepository() {
