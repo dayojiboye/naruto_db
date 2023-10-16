@@ -67,6 +67,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
             state.copyWith(
               status: ViewStatus.failure,
               currentPage: 0,
+              characters: [],
             ),
           );
         }
@@ -118,6 +119,8 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
               state.copyWith(
                 status: ViewStatus.failure,
                 errorMsg: errorMsg,
+                currentPage: 0,
+                characters: [],
               ),
             );
           }
@@ -126,6 +129,9 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
           emit(
             state.copyWith(
               status: ViewStatus.failure,
+              currentPage: 0,
+              characters: [],
+              errorMsg: "",
             ),
           );
         }
