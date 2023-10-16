@@ -36,6 +36,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
                 hasReachedMax: false,
                 currentPage: characters.currentPage,
                 isLoadingMore: true,
+                errorMsg: "",
               ),
             );
           }
@@ -56,6 +57,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
                     currentPage: characters.currentPage,
                     hasReachedMax: false,
                     isLoadingMore: true,
+                    errorMsg: "",
                   ),
                 );
         } catch (e) {
@@ -70,6 +72,64 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
         }
       },
       transformer: throttleDroppable(throttleDuration),
+    );
+    on<SearchCharacter>(
+      (event, emit) async {
+        emit(
+          state.copyWith(
+            status: ViewStatus.initial,
+            errorMsg: "",
+            // hasReachedMax: false,
+          ),
+        );
+
+        try {
+          if (event.name.trim().isEmpty) {
+            final characters = await apiRepository.getAllCharacters();
+            return emit(
+              state.copyWith(
+                status: ViewStatus.success,
+                characters: characters.characters,
+                hasReachedMax: false,
+                currentPage: characters.currentPage,
+                isLoadingMore: true,
+                errorMsg: "",
+              ),
+            );
+          }
+
+          final character =
+              await apiRepository.searchCharacter(event.name.trim());
+          return emit(
+            state.copyWith(
+              status: ViewStatus.success,
+              characters: [character],
+              isLoadingMore: false,
+              hasReachedMax: true,
+              currentPage: 0,
+              errorMsg: "",
+            ),
+          );
+        } catch (e) {
+          if (e.toString().contains("Character with name")) {
+            String errorMsg = e.toString().replaceAll("Exception:", "");
+            print(errorMsg);
+            return emit(
+              state.copyWith(
+                status: ViewStatus.failure,
+                errorMsg: errorMsg,
+              ),
+            );
+          }
+
+          print(e);
+          emit(
+            state.copyWith(
+              status: ViewStatus.failure,
+            ),
+          );
+        }
+      },
     );
   }
 }

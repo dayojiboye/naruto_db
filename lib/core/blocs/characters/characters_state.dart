@@ -5,8 +5,9 @@ final class CharactersState extends Equatable {
     this.status = ViewStatus.initial,
     this.characters = const <Character>[],
     this.hasReachedMax = false,
-    this.currentPage = 1,
+    this.currentPage = 0,
     this.isLoadingMore = false,
+    this.errorMsg = "",
   });
 
   final ViewStatus status;
@@ -14,6 +15,7 @@ final class CharactersState extends Equatable {
   final bool hasReachedMax;
   final int currentPage;
   final bool isLoadingMore;
+  final String errorMsg;
 
   CharactersState copyWith({
     ViewStatus? status,
@@ -21,6 +23,7 @@ final class CharactersState extends Equatable {
     bool? hasReachedMax,
     int? currentPage,
     bool? isLoadingMore,
+    String? errorMsg,
   }) {
     return CharactersState(
       status: status ?? this.status,
@@ -28,6 +31,7 @@ final class CharactersState extends Equatable {
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
       currentPage: currentPage ?? this.currentPage,
       isLoadingMore: isLoadingMore ?? this.isLoadingMore,
+      errorMsg: errorMsg ?? this.errorMsg,
     );
   }
 
@@ -43,5 +47,6 @@ final class CharactersState extends Equatable {
         characters,
         currentPage,
         isLoadingMore,
+        errorMsg,
       ];
 }

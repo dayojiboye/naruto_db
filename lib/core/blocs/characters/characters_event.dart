@@ -6,3 +6,12 @@ sealed class CharactersEvent extends Equatable {
 }
 
 final class FetchCharacters extends CharactersEvent {}
+
+final class SearchCharacter extends CharactersEvent {
+  SearchCharacter(this.name);
+
+  final String name;
+
+  @override
+  List<Object> get props => [name];
+}

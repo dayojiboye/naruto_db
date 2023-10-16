@@ -5,7 +5,7 @@ import 'package:naruto_db/widgets/button.dart';
 
 class ErrorPanel extends StatelessWidget {
   const ErrorPanel({
-    this.errorMsg = "An error occurred",
+    required this.errorMsg,
     required this.onRefetch,
     super.key,
   });
@@ -20,18 +20,22 @@ class ErrorPanel extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            "An error occurred",
+            errorMsg.isNotEmpty
+                ? errorMsg
+                : "An error occurred, please try again!",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: kError,
+              color: errorMsg.isNotEmpty ? kTextPrimary : kError,
               fontSize: 18,
             ),
           ),
-          const YMargin(8),
-          Button(
-            label: "Retry",
-            onPressed: onRefetch,
-          )
+          const YMargin(24),
+          errorMsg.isNotEmpty
+              ? const YMargin(0)
+              : Button(
+                  label: "Retry",
+                  onPressed: onRefetch,
+                )
         ],
       ),
     );

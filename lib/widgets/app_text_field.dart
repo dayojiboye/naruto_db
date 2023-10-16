@@ -3,22 +3,25 @@ import 'package:naruto_db/utils/theme.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
-    required this.controller,
+    this.controller,
     required this.hintText,
     this.onChanged,
     this.prefixIcon,
+    this.enabled,
     super.key,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String hintText;
   final void Function(String)? onChanged;
   final Widget? prefixIcon;
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       autofocus: false,
+      enabled: enabled,
       controller: controller,
       textCapitalization: TextCapitalization.sentences,
       cursorColor: kMuted,
