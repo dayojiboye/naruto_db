@@ -29,6 +29,7 @@ class AppTextField extends StatelessWidget {
     return TextField(
       autofocus: false,
       enabled: enabled,
+      autocorrect: false,
       controller: controller,
       textCapitalization: TextCapitalization.sentences,
       cursorColor: kMuted,

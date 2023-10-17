@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:naruto_db/core/models/characters/character.dart';
+import 'package:naruto_db/core/models/characters/characters.dart';
 import 'package:naruto_db/core/repositories/api_repository.dart';
 import 'package:naruto_db/enums/view_status.dart';
 import 'package:stream_transform/stream_transform.dart';

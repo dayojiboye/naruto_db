@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:naruto_db/core/models/characters/character.dart';
 import 'package:naruto_db/core/models/characters/characters.dart';
 import 'package:naruto_db/core/repositories/api_interceptor.dart';
 
@@ -39,6 +38,17 @@ class ApiRepository {
       if (e.response!.statusCode == 404) {
         throw Exception(e.response);
       }
+      throw onError(e);
+    }
+  }
+
+  Future<Character> getCharacterById(int id) async {
+    final url = "character/$id";
+    try {
+      final response = await dio.get(url);
+      return Character.fromJson(response.data);
+    } on DioException catch (e) {
+      print(e);
       throw onError(e);
     }
   }

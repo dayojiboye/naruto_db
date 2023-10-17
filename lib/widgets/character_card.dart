@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:naruto_db/utils/margin.dart';
 import 'package:naruto_db/utils/theme.dart';
 import "package:cached_network_image/cached_network_image.dart";
+import 'package:naruto_db/views/character_details_screen.dart';
 
 class CharacterCard extends StatefulWidget {
   const CharacterCard({
@@ -25,7 +26,13 @@ class _CharacterCardState extends State<CharacterCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => CharacterDetailsScreen(id: widget.id),
+          ),
+        );
+      },
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
@@ -43,6 +50,7 @@ class _CharacterCardState extends State<CharacterCard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // To-Do: add loading placeholder
             CachedNetworkImage(
               imageUrl: isAvatarError
                   ? "https://via.placeholder.com/150?text=${widget.name}"
