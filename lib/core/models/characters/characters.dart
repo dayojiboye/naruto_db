@@ -103,9 +103,9 @@ class Character extends Equatable {
   final List<String> jutsu;
   final PersonalClass? personal;
   final List<String> uniqueTraits;
-  final dynamic? family;
+  final Family? family;
   final List<String> natureType;
-  final dynamic? rank;
+  final RankClass? rank;
   final VoiceActors? voiceActors;
   final List<String> tools;
   final SandaimeKazekage? aniki;
@@ -165,13 +165,13 @@ class Character extends Equatable {
       uniqueTraits: json["uniqueTraits"] == null
           ? []
           : List<String>.from(json["uniqueTraits"]!.map((x) => x)),
-      // family: Map.from(json["family"])
-      //     .map((k, v) => MapEntry<String, dynamic>(k, v)),
-      family: json["family"],
+      family: json["family"] == null ? null : Family.fromJson(json["family"]),
       natureType: json["natureType"] == null
           ? []
           : List<String>.from(json["natureType"]!.map((x) => x)),
-      rank: json["rank"],
+      rank: json["rank"] == null || json["rank"] is List
+          ? null
+          : RankClass.fromJson(json["rank"]),
       voiceActors: json["voiceActors"] == null
           ? null
           : VoiceActors.fromJson(json["voiceActors"]),
@@ -306,9 +306,7 @@ class Character extends Equatable {
         // "personal": personal,
         "personal": personal?.toJson(),
         "uniqueTraits": uniqueTraits.map((x) => x).toList(),
-        // "family":
-        //     Map.from(family).map((k, v) => MapEntry<String, dynamic>(k, v)),
-        family: family,
+        "family": family?.toJson(),
         "natureType": natureType.map((x) => x).toList(),
         "rank": rank,
         "voiceActors": voiceActors?.toJson(),
@@ -645,6 +643,11 @@ class Age extends Equatable {
       };
 
   @override
+  String toString() {
+    return "Part II: ${partIi ?? "N/A"}\nPart I: ${partI ?? "N/A"}\nAcademy Graduate: ${academyGraduate ?? "N/A"}\nChunin Promotion: ${chuninPromotion ?? "N/A"}\nBoruto Manga: ${borutoManga ?? "N/A"}\nBoruto Movie: ${borutoMovie ?? "N/A"}\nGaiden: ${gaiden ?? "N/A"}\nBlank Period: ${blankPeriod ?? "N/A"}";
+  }
+
+  @override
   List<Object?> get props => [
         partIi,
         partI,
@@ -679,9 +682,72 @@ class Weight extends Equatable {
       };
 
   @override
+  String toString() {
+    return "Part II: ${partIi ?? "N/A"}\nPart I: ${partI ?? "N/A"}";
+  }
+
+  @override
   List<Object?> get props => [
         partIi,
         partI,
+      ];
+}
+
+class Family extends Equatable {
+  Family({
+    this.father,
+    this.mother,
+    this.son,
+    this.daughter,
+    this.wife,
+    this.adoptiveSon,
+    this.godfather,
+  });
+
+  final String? father;
+  final String? mother;
+  final String? son;
+  final String? daughter;
+  final String? wife;
+  final String? adoptiveSon;
+  final String? godfather;
+
+  factory Family.fromJson(Map<String, dynamic> json) {
+    return Family(
+      father: json["father"],
+      mother: json["mother"],
+      son: json["son"],
+      daughter: json["daughter"],
+      wife: json["wife"],
+      adoptiveSon: json["adoptive son"],
+      godfather: json["godfather"],
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        "Father": father,
+        "Mother": mother,
+        "Son": son,
+        "Daughter": daughter,
+        "Wife": wife,
+        "Adoptive Son": adoptiveSon,
+        "Godfather": godfather,
+      };
+
+  @override
+  String toString() {
+    return "Father: ${father ?? "N/A"}\nMother: ${mother ?? "N/A"}\nSon: ${son ?? "N/A"}\nDaughter: ${daughter ?? "N/A"}\nWife: ${wife ?? "N/A"}\nAdoptive Son: ${adoptiveSon ?? "N/A"}\nGodfather: ${godfather ?? "N/A"}";
+  }
+
+  @override
+  List<Object?> get props => [
+        father,
+        mother,
+        son,
+        daughter,
+        wife,
+        adoptiveSon,
+        godfather,
       ];
 }
 

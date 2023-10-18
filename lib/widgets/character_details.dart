@@ -3,6 +3,9 @@ import 'package:naruto_db/core/blocs/character_details/character_details_bloc.da
 import 'package:naruto_db/utils/theme.dart';
 import 'package:naruto_db/widgets/debut_details.dart';
 import 'package:naruto_db/widgets/details_heading_text.dart';
+import 'package:naruto_db/widgets/family_details.dart';
+import 'package:naruto_db/widgets/nature_type_details.dart';
+import 'package:naruto_db/widgets/personal_details.dart';
 import 'package:naruto_db/widgets/titles_details.dart';
 import 'package:naruto_db/widgets/voice_actors_details.dart';
 import 'package:shimmer/shimmer.dart';
@@ -109,7 +112,10 @@ class CharacterDetails extends StatelessWidget {
                   titles: state.character?.personal?.titles ?? [],
                 ),
                 // Debut
-                const DetailsHeadingText(title: "Debut"),
+                DetailsHeadingText(
+                  title: "Debut",
+                  isHidden: state.character?.debut == null,
+                ),
                 DebutDetails(
                   title: "Manga",
                   value: state.character?.debut?.manga,
@@ -139,7 +145,10 @@ class CharacterDetails extends StatelessWidget {
                   value: state.character?.debut?.appearsIn,
                 ),
                 // Voice Actors
-                const DetailsHeadingText(title: "Voice Actors"),
+                DetailsHeadingText(
+                  title: "Voice Actors",
+                  isHidden: state.character?.voiceActors == null,
+                ),
                 VoiceActorsDetails(
                   voiceActors: state.character?.voiceActors?.japanese,
                   title: "Japanese",
@@ -147,6 +156,103 @@ class CharacterDetails extends StatelessWidget {
                 VoiceActorsDetails(
                   voiceActors: state.character?.voiceActors?.english,
                   title: "English",
+                ),
+                // Personal
+                DetailsHeadingText(
+                  title: "Personal",
+                  isHidden: state.character?.personal == null,
+                ),
+                PersonalDetails(
+                  title: "Species",
+                  value: state.character?.personal?.species,
+                ),
+                PersonalDetails(
+                  title: "Birthdate",
+                  value: state.character?.personal?.birthdate,
+                ),
+                PersonalDetails(
+                  title: "Sex",
+                  value: state.character?.personal?.sex,
+                ),
+                PersonalDetails(
+                  title: "Age",
+                  value: state.character?.personal?.age,
+                ),
+                PersonalDetails(
+                  title: "Status",
+                  value: state.character?.personal?.status,
+                ),
+                PersonalDetails(
+                  title: "Height",
+                  value: state.character?.personal?.height,
+                ),
+                PersonalDetails(
+                  title: "Weight",
+                  value: state.character?.personal?.weight,
+                ),
+                PersonalDetails(
+                  title: "Blood type",
+                  value: state.character?.personal?.bloodType,
+                ),
+                PersonalDetails(
+                  title: "Kekkei Genkai",
+                  value: state.character?.personal?.kekkeiGenkai,
+                ),
+                PersonalDetails(
+                  title: "Classification",
+                  value: state.character?.personal?.classification,
+                ),
+                PersonalDetails(
+                  title: "Tailed Beast",
+                  value: state.character?.personal?.tailedBeast,
+                ),
+                PersonalDetails(
+                  title: "Occupation",
+                  value: state.character?.personal?.occupation,
+                ),
+                PersonalDetails(
+                  title: "Affiliation",
+                  value: state.character?.personal?.affiliation,
+                ),
+                PersonalDetails(
+                  title: "Team",
+                  value: state.character?.personal?.team,
+                ),
+                PersonalDetails(
+                  title: "Clan",
+                  value: state.character?.personal?.clan,
+                ),
+                // Rank
+                DetailsHeadingText(
+                  title: "Rank",
+                  isHidden: state.character?.rank == null,
+                ),
+                PersonalDetails(
+                  title: "Ninja Rank",
+                  value: state.character?.rank?.ninjaRank,
+                ),
+                PersonalDetails(
+                  title: "Ninja Registration",
+                  value: state.character?.rank?.ninjaRegistration,
+                ),
+                FamilyDetails(state: state),
+                // Nature Type
+                NatureTypeDetails(
+                  title: "Nature Type",
+                  natureType: state.character?.natureType,
+                  state: state,
+                ),
+                // Jutsu
+                NatureTypeDetails(
+                  title: "Jutsu",
+                  natureType: state.character?.jutsu,
+                  state: state,
+                ),
+                // Tools
+                NatureTypeDetails(
+                  title: "Tools",
+                  natureType: state.character?.tools,
+                  state: state,
                 ),
               ],
             ),
