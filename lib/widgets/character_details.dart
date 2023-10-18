@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:naruto_db/core/blocs/character_details/character_details_bloc.dart';
-import 'package:naruto_db/utils/margin.dart';
 import 'package:naruto_db/utils/theme.dart';
+import 'package:naruto_db/widgets/debut_details.dart';
+import 'package:naruto_db/widgets/details_heading_text.dart';
+import 'package:naruto_db/widgets/titles_details.dart';
+import 'package:naruto_db/widgets/voice_actors_details.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CharacterDetails extends StatelessWidget {
@@ -16,27 +19,27 @@ class CharacterDetails extends StatelessWidget {
   final void Function(int)? onPageChanged;
   final int activeImageIndex;
 
+  List<Widget> pageViewIndicator(imagesLength, currentIndex) {
+    return List<Widget>.generate(
+      imagesLength,
+      (index) {
+        return Container(
+          margin: const EdgeInsets.all(3),
+          width: 10,
+          height: 10,
+          decoration: BoxDecoration(
+            color: currentIndex == index ? kPrimary : kGhost,
+            shape: BoxShape.circle,
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // print(state.character!.personal!.height);
-    List<Widget> pageViewIndicator(imagesLength, currentIndex) {
-      return List<Widget>.generate(
-        imagesLength,
-        (index) {
-          return Container(
-            margin: const EdgeInsets.all(3),
-            width: 10,
-            height: 10,
-            decoration: BoxDecoration(
-              color: currentIndex == index ? kPrimary : kGhost,
-              shape: BoxShape.circle,
-            ),
-          );
-        },
-      );
-    }
-
     return SingleChildScrollView(
+      padding: const EdgeInsets.only(bottom: 50),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,6 +75,11 @@ class CharacterDetails extends StatelessWidget {
                           highlightColor: Colors.grey[100]!,
                           child: const Card(
                             elevation: 1.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusDirectional.all(
+                                Radius.circular(0),
+                              ),
+                            ),
                             child: SizedBox(),
                           ),
                         );
@@ -96,112 +104,55 @@ class CharacterDetails extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const YMargin(32),
-                const HeadingText(title: "Debut"),
-                Debut(
-                  title: "Appears in:",
-                  value: state.character?.debut?.appearsIn,
+                // Titles
+                TitlesDetails(
+                  titles: state.character?.personal?.titles ?? [],
                 ),
-                Debut(
+                // Debut
+                const DetailsHeadingText(title: "Debut"),
+                DebutDetails(
+                  title: "Manga",
+                  value: state.character?.debut?.manga,
+                ),
+                DebutDetails(
+                  title: "Anime",
+                  value: state.character?.debut?.anime,
+                ),
+                DebutDetails(
                   title: "Novel",
                   value: state.character?.debut?.novel,
                 ),
-                const YMargin(32),
-                const HeadingText(title: "Titles"),
-                // PersonalTitles(
-                //     titles: state.character!.personal?.titles != null
-                //         ? state.character?.personal.titles
-                //         : [])
+                DebutDetails(
+                  title: "Movie",
+                  value: state.character?.debut?.movie,
+                ),
+                DebutDetails(
+                  title: "Game",
+                  value: state.character?.debut?.game,
+                ),
+                DebutDetails(
+                  title: "OVA",
+                  value: state.character?.debut?.ova,
+                ),
+                DebutDetails(
+                  title: "Appears in",
+                  value: state.character?.debut?.appearsIn,
+                ),
+                // Voice Actors
+                const DetailsHeadingText(title: "Voice Actors"),
+                VoiceActorsDetails(
+                  voiceActors: state.character?.voiceActors?.japanese,
+                  title: "Japanese",
+                ),
+                VoiceActorsDetails(
+                  voiceActors: state.character?.voiceActors?.english,
+                  title: "English",
+                ),
               ],
             ),
           ),
         ],
       ),
     );
-  }
-}
-
-// To-Do: move blow widgets to respective files
-// Heading Text
-class HeadingText extends StatelessWidget {
-  const HeadingText({required this.title, super.key});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: const TextStyle(
-        color: kTextPrimary,
-        fontWeight: FontWeight.w600,
-        fontSize: 24,
-      ),
-    );
-  }
-}
-
-// Debut
-class Debut extends StatelessWidget {
-  const Debut({
-    required this.title,
-    this.value,
-    super.key,
-  });
-
-  final String title;
-  final String? value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            border: BorderDirectional(
-              bottom: BorderSide(
-                color: kGhost,
-              ),
-            ),
-          ),
-          child: Row(
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: kTextPrimary,
-                  fontSize: 16,
-                ),
-              ),
-              const XMargin(4),
-              Text(
-                value ?? "N/A",
-                style: const TextStyle(
-                  color: kTextPrimary,
-                  fontSize: 16,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const YMargin(8),
-      ],
-    );
-  }
-}
-
-// Personal Title
-class PersonalTitles extends StatelessWidget {
-  const PersonalTitles({required this.titles, super.key});
-
-  final List<String> titles;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(titles.toString());
   }
 }

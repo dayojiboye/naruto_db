@@ -41,13 +41,12 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
           icon: const Icon(
             Icons.arrow_back,
             color: kTextPrimary,
-            size: 28,
+            size: 24,
           ),
         ),
       ),
       body: Container(
         padding: const EdgeInsets.only(
-          bottom: 50,
           left: 10,
           right: 10,
         ),

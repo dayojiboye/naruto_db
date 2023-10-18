@@ -69,8 +69,8 @@ class CharactersWidget extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) {
                   return CharacterCard(
-                    name: state.characters[index].name,
-                    id: state.characters[index].id,
+                    name: state.characters[index].name!,
+                    id: state.characters[index].id!,
                     image: state.characters[index].images.isNotEmpty
                         ? state.characters[index].images[0]
                         : "https://via.placeholder.com/150?text=${state.characters[index].name}",

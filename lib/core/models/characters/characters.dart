@@ -9,23 +9,9 @@ class Characters extends Equatable {
   });
 
   final List<Character> characters;
-  final int currentPage;
-  final int pageSize;
-  final int totalCharacters;
-
-  Characters copyWith({
-    List<Character>? characters,
-    int? currentPage,
-    int? pageSize,
-    int? totalCharacters,
-  }) {
-    return Characters(
-      characters: characters ?? this.characters,
-      currentPage: currentPage ?? this.currentPage,
-      pageSize: pageSize ?? this.pageSize,
-      totalCharacters: totalCharacters ?? this.totalCharacters,
-    );
-  }
+  final int? currentPage;
+  final int? pageSize;
+  final int? totalCharacters;
 
   factory Characters.fromJson(Map<String, dynamic> json) {
     return Characters(
@@ -33,9 +19,9 @@ class Characters extends Equatable {
           ? []
           : List<Character>.from(
               json["characters"]!.map((x) => Character.fromJson(x))),
-      currentPage: json["currentPage"] ?? 0,
-      pageSize: json["pageSize"] ?? 0,
-      totalCharacters: json["totalCharacters"] ?? 0,
+      currentPage: json["currentPage"],
+      pageSize: json["pageSize"],
+      totalCharacters: json["totalCharacters"],
     );
   }
 
@@ -110,17 +96,16 @@ class Character extends Equatable {
     required this.tsubaki,
   });
 
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
   final List<String> images;
   final Debut? debut;
   final List<String> jutsu;
-  final dynamic? personal;
+  final PersonalClass? personal;
   final List<String> uniqueTraits;
-  // final Map<String, String> family;
   final dynamic? family;
   final List<String> natureType;
-  final dynamic rank;
+  final dynamic? rank;
   final VoiceActors? voiceActors;
   final List<String> tools;
   final SandaimeKazekage? aniki;
@@ -163,119 +148,10 @@ class Character extends Equatable {
   final SandaimeKazekage? toki;
   final SandaimeKazekage? tsubaki;
 
-  Character copyWith({
-    int? id,
-    String? name,
-    List<String>? images,
-    Debut? debut,
-    List<String>? jutsu,
-    dynamic? personal,
-    List<String>? uniqueTraits,
-    // Map<String, String>? family,
-    dynamic? family,
-    List<String>? natureType,
-    dynamic? rank,
-    VoiceActors? voiceActors,
-    List<String>? tools,
-    SandaimeKazekage? aniki,
-    SandaimeKazekage? chikushd,
-    SandaimeKazekage? shurad,
-    SandaimeKazekage? chiyo,
-    SandaimeKazekage? daikokuTenzen,
-    SandaimeKazekage? dorGremu,
-    SandaimeKazekage? fjin,
-    SandaimeKazekage? funatoSeiren,
-    SandaimeKazekage? gama,
-    SandaimeKazekage? gantetsu,
-    SandaimeKazekage? gzu,
-    SandaimeKazekage? gozu,
-    SandaimeKazekage? guren,
-    SandaimeKazekage? hakui,
-    SandaimeKazekage? hiruko,
-    SandaimeKazekage? hki,
-    SandaimeKazekage? ningend,
-    SandaimeKazekage? kagari,
-    SandaimeKazekage? kage,
-    SandaimeKazekage? karin,
-    SandaimeKazekage? karura,
-    SandaimeKazekage? sandaimeKazekage,
-    SandaimeKazekage? kiri,
-    SandaimeKazekage? kosuke,
-    SandaimeKazekage? meizu,
-    SandaimeKazekage? jigokud,
-    SandaimeKazekage? nawaki,
-    SandaimeKazekage? gakid,
-    SandaimeKazekage? raijin,
-    SandaimeKazekage? ran,
-    SandaimeKazekage? rydinJak,
-    SandaimeKazekage? sajin,
-    SandaimeKazekage? sansh,
-    SandaimeKazekage? senkaSazanami,
-    SandaimeKazekage? shiin,
-    SandaimeKazekage? jbi,
-    SandaimeKazekage? tofu,
-    SandaimeKazekage? toki,
-    SandaimeKazekage? tsubaki,
-  }) {
-    return Character(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      images: images ?? this.images,
-      debut: debut ?? this.debut,
-      jutsu: jutsu ?? this.jutsu,
-      personal: personal ?? this.personal,
-      uniqueTraits: uniqueTraits ?? this.uniqueTraits,
-      family: family ?? this.family,
-      natureType: natureType ?? this.natureType,
-      rank: rank ?? this.rank,
-      voiceActors: voiceActors ?? this.voiceActors,
-      tools: tools ?? this.tools,
-      aniki: aniki ?? this.aniki,
-      chikushd: chikushd ?? this.chikushd,
-      shurad: shurad ?? this.shurad,
-      chiyo: chiyo ?? this.chiyo,
-      daikokuTenzen: daikokuTenzen ?? this.daikokuTenzen,
-      dorGremu: dorGremu ?? this.dorGremu,
-      fjin: fjin ?? this.fjin,
-      funatoSeiren: funatoSeiren ?? this.funatoSeiren,
-      gama: gama ?? this.gama,
-      gantetsu: gantetsu ?? this.gantetsu,
-      gzu: gzu ?? this.gzu,
-      gozu: gozu ?? this.gozu,
-      guren: guren ?? this.guren,
-      hakui: hakui ?? this.hakui,
-      hiruko: hiruko ?? this.hiruko,
-      hki: hki ?? this.hki,
-      ningend: ningend ?? this.ningend,
-      kagari: kagari ?? this.kagari,
-      kage: kage ?? this.kage,
-      karin: karin ?? this.karin,
-      karura: karura ?? this.karura,
-      sandaimeKazekage: sandaimeKazekage ?? this.sandaimeKazekage,
-      kiri: kiri ?? this.kiri,
-      kosuke: kosuke ?? this.kosuke,
-      meizu: meizu ?? this.meizu,
-      jigokud: jigokud ?? this.jigokud,
-      nawaki: nawaki ?? this.nawaki,
-      gakid: gakid ?? this.gakid,
-      raijin: raijin ?? this.raijin,
-      ran: ran ?? this.ran,
-      rydinJak: rydinJak ?? this.rydinJak,
-      sajin: sajin ?? this.sajin,
-      sansh: sansh ?? this.sansh,
-      senkaSazanami: senkaSazanami ?? this.senkaSazanami,
-      shiin: shiin ?? this.shiin,
-      jbi: jbi ?? this.jbi,
-      tofu: tofu ?? this.tofu,
-      toki: toki ?? this.toki,
-      tsubaki: tsubaki ?? this.tsubaki,
-    );
-  }
-
   factory Character.fromJson(Map<String, dynamic> json) {
     return Character(
-      id: json["id"] ?? 0,
-      name: json["name"] ?? "",
+      id: json["id"],
+      name: json["name"],
       images: json["images"] == null
           ? []
           : List<String>.from(json["images"]!.map((x) => x)),
@@ -283,12 +159,14 @@ class Character extends Equatable {
       jutsu: json["jutsu"] == null
           ? []
           : List<String>.from(json["jutsu"]!.map((x) => x)),
-      personal: json["personal"],
+      personal: json["personal"] == null || json["personal"] is List
+          ? null
+          : PersonalClass.fromJson(json["personal"]),
       uniqueTraits: json["uniqueTraits"] == null
           ? []
           : List<String>.from(json["uniqueTraits"]!.map((x) => x)),
       // family: Map.from(json["family"])
-      //     .map((k, v) => MapEntry<String, String>(k, v)),
+      //     .map((k, v) => MapEntry<String, dynamic>(k, v)),
       family: json["family"],
       natureType: json["natureType"] == null
           ? []
@@ -425,11 +303,12 @@ class Character extends Equatable {
         "images": images.map((x) => x).toList(),
         "debut": debut?.toJson(),
         "jutsu": jutsu.map((x) => x).toList(),
-        "personal": personal,
+        // "personal": personal,
+        "personal": personal?.toJson(),
         "uniqueTraits": uniqueTraits.map((x) => x).toList(),
         // "family":
-        //     Map.from(family).map((k, v) => MapEntry<String, String>(k, v)),
-        "family": family,
+        //     Map.from(family).map((k, v) => MapEntry<String, dynamic>(k, v)),
+        family: family,
         "natureType": natureType.map((x) => x).toList(),
         "rank": rank,
         "voiceActors": voiceActors?.toJson(),
@@ -556,43 +435,23 @@ class Debut extends Equatable {
     required this.ova,
   });
 
-  final String novel;
-  final String movie;
-  final String appearsIn;
-  final String manga;
-  final String anime;
-  final String game;
-  final String ova;
-
-  Debut copyWith({
-    String? novel,
-    String? movie,
-    String? appearsIn,
-    String? manga,
-    String? anime,
-    String? game,
-    String? ova,
-  }) {
-    return Debut(
-      novel: novel ?? this.novel,
-      movie: movie ?? this.movie,
-      appearsIn: appearsIn ?? this.appearsIn,
-      manga: manga ?? this.manga,
-      anime: anime ?? this.anime,
-      game: game ?? this.game,
-      ova: ova ?? this.ova,
-    );
-  }
+  final String? novel;
+  final String? movie;
+  final String? appearsIn;
+  final String? manga;
+  final String? anime;
+  final String? game;
+  final String? ova;
 
   factory Debut.fromJson(Map<String, dynamic> json) {
     return Debut(
-      novel: json["novel"] ?? "",
-      movie: json["movie"] ?? "",
-      appearsIn: json["appearsIn"] ?? "",
-      manga: json["manga"] ?? "",
-      anime: json["anime"] ?? "",
-      game: json["game"] ?? "",
-      ova: json["ova"] ?? "",
+      novel: json["novel"],
+      movie: json["movie"],
+      appearsIn: json["appearsIn"],
+      manga: json["manga"],
+      anime: json["anime"],
+      game: json["game"],
+      ova: json["ova"],
     );
   }
 
@@ -642,77 +501,31 @@ class PersonalClass extends Equatable {
     required this.kekkeiMra,
   });
 
-  final String species;
-  final String status;
-  final dynamic kekkeiGenkai;
-  final dynamic classification;
+  final String? species;
+  final String? status;
+  final dynamic? kekkeiGenkai;
+  final dynamic? classification;
   final List<String> jinchriki;
   final List<String> titles;
-  final dynamic affiliation;
-  final String birthdate;
-  final String sex;
+  final dynamic? affiliation;
+  final String? birthdate;
+  final String? sex;
   final Age? height;
   final Weight? weight;
-  final String bloodType;
-  final dynamic occupation;
-  final dynamic team;
-  final dynamic partner;
+  final String? bloodType;
+  final dynamic? occupation;
+  final dynamic? team;
+  final dynamic? partner;
   final Age? age;
-  final dynamic clan;
-  final String tailedBeast;
-  final String kekkeiTta;
-  final dynamic kekkeiMra;
-
-  PersonalClass copyWith({
-    String? species,
-    String? status,
-    dynamic? kekkeiGenkai,
-    dynamic? classification,
-    List<String>? jinchriki,
-    List<String>? titles,
-    dynamic? affiliation,
-    String? birthdate,
-    String? sex,
-    Age? height,
-    Weight? weight,
-    String? bloodType,
-    dynamic? occupation,
-    dynamic? team,
-    dynamic? partner,
-    Age? age,
-    dynamic? clan,
-    String? tailedBeast,
-    String? kekkeiTta,
-    dynamic? kekkeiMra,
-  }) {
-    return PersonalClass(
-      species: species ?? this.species,
-      status: status ?? this.status,
-      kekkeiGenkai: kekkeiGenkai ?? this.kekkeiGenkai,
-      classification: classification ?? this.classification,
-      jinchriki: jinchriki ?? this.jinchriki,
-      titles: titles ?? this.titles,
-      affiliation: affiliation ?? this.affiliation,
-      birthdate: birthdate ?? this.birthdate,
-      sex: sex ?? this.sex,
-      height: height ?? this.height,
-      weight: weight ?? this.weight,
-      bloodType: bloodType ?? this.bloodType,
-      occupation: occupation ?? this.occupation,
-      team: team ?? this.team,
-      partner: partner ?? this.partner,
-      age: age ?? this.age,
-      clan: clan ?? this.clan,
-      tailedBeast: tailedBeast ?? this.tailedBeast,
-      kekkeiTta: kekkeiTta ?? this.kekkeiTta,
-      kekkeiMra: kekkeiMra ?? this.kekkeiMra,
-    );
-  }
+  final dynamic? clan;
+  final String? tailedBeast;
+  final String? kekkeiTta;
+  final dynamic? kekkeiMra;
 
   factory PersonalClass.fromJson(Map<String, dynamic> json) {
     return PersonalClass(
-      species: json["species"] ?? "",
-      status: json["status"] ?? "",
+      species: json["species"],
+      status: json["status"],
       kekkeiGenkai: json["kekkeiGenkai"],
       classification: json["classification"],
       jinchriki: json["jinchūriki"] == null
@@ -722,18 +535,18 @@ class PersonalClass extends Equatable {
           ? []
           : List<String>.from(json["titles"]!.map((x) => x)),
       affiliation: json["affiliation"],
-      birthdate: json["birthdate"] ?? "",
-      sex: json["sex"] ?? "",
+      birthdate: json["birthdate"],
+      sex: json["sex"],
       height: json["height"] == null ? null : Age.fromJson(json["height"]),
       weight: json["weight"] == null ? null : Weight.fromJson(json["weight"]),
-      bloodType: json["bloodType"] ?? "",
+      bloodType: json["bloodType"],
       occupation: json["occupation"],
       team: json["team"],
       partner: json["partner"],
       age: json["age"] == null ? null : Age.fromJson(json["age"]),
       clan: json["clan"],
-      tailedBeast: json["tailedBeast"] ?? "",
-      kekkeiTta: json["kekkeiTōta"] ?? "",
+      tailedBeast: json["tailedBeast"],
+      kekkeiTta: json["kekkeiTōta"],
       kekkeiMra: json["kekkeiMōra"],
     );
   }
@@ -798,47 +611,25 @@ class Age extends Equatable {
     required this.blankPeriod,
   });
 
-  final String partIi;
-  final String partI;
-  final String academyGraduate;
-  final String chuninPromotion;
-  final String borutoManga;
-  final String borutoMovie;
-  final String gaiden;
-  final String blankPeriod;
-
-  Age copyWith({
-    String? partIi,
-    String? partI,
-    String? academyGraduate,
-    String? chuninPromotion,
-    String? borutoManga,
-    String? borutoMovie,
-    String? gaiden,
-    String? blankPeriod,
-  }) {
-    return Age(
-      partIi: partIi ?? this.partIi,
-      partI: partI ?? this.partI,
-      academyGraduate: academyGraduate ?? this.academyGraduate,
-      chuninPromotion: chuninPromotion ?? this.chuninPromotion,
-      borutoManga: borutoManga ?? this.borutoManga,
-      borutoMovie: borutoMovie ?? this.borutoMovie,
-      gaiden: gaiden ?? this.gaiden,
-      blankPeriod: blankPeriod ?? this.blankPeriod,
-    );
-  }
+  final String? partIi;
+  final String? partI;
+  final String? academyGraduate;
+  final String? chuninPromotion;
+  final String? borutoManga;
+  final String? borutoMovie;
+  final String? gaiden;
+  final String? blankPeriod;
 
   factory Age.fromJson(Map<String, dynamic> json) {
     return Age(
-      partIi: json["Part II"] ?? "",
-      partI: json["Part I"] ?? "",
-      academyGraduate: json["Academy Graduate"] ?? "",
-      chuninPromotion: json["Chunin Promotion"] ?? "",
-      borutoManga: json["Boruto Manga"] ?? "",
-      borutoMovie: json["Boruto Movie"] ?? "",
-      gaiden: json["Gaiden"] ?? "",
-      blankPeriod: json["Blank Period"] ?? "",
+      partIi: json["Part II"],
+      partI: json["Part I"],
+      academyGraduate: json["Academy Graduate"],
+      chuninPromotion: json["Chunin Promotion"],
+      borutoManga: json["Boruto Manga"],
+      borutoMovie: json["Boruto Movie"],
+      gaiden: json["Gaiden"],
+      blankPeriod: json["Blank Period"],
     );
   }
 
@@ -872,23 +663,13 @@ class Weight extends Equatable {
     required this.partI,
   });
 
-  final String partIi;
-  final String partI;
-
-  Weight copyWith({
-    String? partIi,
-    String? partI,
-  }) {
-    return Weight(
-      partIi: partIi ?? this.partIi,
-      partI: partI ?? this.partI,
-    );
-  }
+  final String? partIi;
+  final String? partI;
 
   factory Weight.fromJson(Map<String, dynamic> json) {
     return Weight(
-      partIi: json["Part II"] ?? "",
-      partI: json["Part I"] ?? "",
+      partIi: json["Part II"],
+      partI: json["Part I"],
     );
   }
 
@@ -911,23 +692,13 @@ class RankClass extends Equatable {
   });
 
   final Age? ninjaRank;
-  final String ninjaRegistration;
-
-  RankClass copyWith({
-    Age? ninjaRank,
-    String? ninjaRegistration,
-  }) {
-    return RankClass(
-      ninjaRank: ninjaRank ?? this.ninjaRank,
-      ninjaRegistration: ninjaRegistration ?? this.ninjaRegistration,
-    );
-  }
+  final String? ninjaRegistration;
 
   factory RankClass.fromJson(Map<String, dynamic> json) {
     return RankClass(
       ninjaRank:
           json["ninjaRank"] == null ? null : Age.fromJson(json["ninjaRank"]),
-      ninjaRegistration: json["ninjaRegistration"] ?? "",
+      ninjaRegistration: json["ninjaRegistration"],
     );
   }
 
@@ -949,18 +720,8 @@ class VoiceActors extends Equatable {
     required this.english,
   });
 
-  final dynamic japanese;
-  final dynamic english;
-
-  VoiceActors copyWith({
-    dynamic? japanese,
-    dynamic? english,
-  }) {
-    return VoiceActors(
-      japanese: japanese ?? this.japanese,
-      english: english ?? this.english,
-    );
-  }
+  final dynamic? japanese;
+  final dynamic? english;
 
   factory VoiceActors.fromJson(Map<String, dynamic> json) {
     return VoiceActors(
