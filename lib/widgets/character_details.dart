@@ -93,13 +93,15 @@ class CharacterDetails extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: pageViewIndicator(
-              state.character?.images.length,
-              activeImageIndex,
-            ),
-          ),
+          state.character!.images.length > 1
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: pageViewIndicator(
+                    state.character?.images.length,
+                    activeImageIndex,
+                  ),
+                )
+              : const SizedBox(),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 10,
@@ -239,19 +241,19 @@ class CharacterDetails extends StatelessWidget {
                 // Nature Type
                 NatureTypeDetails(
                   title: "Nature Type",
-                  natureType: state.character?.natureType,
+                  value: state.character?.natureType,
                   state: state,
                 ),
                 // Jutsu
                 NatureTypeDetails(
                   title: "Jutsu",
-                  natureType: state.character?.jutsu,
+                  value: state.character?.jutsu,
                   state: state,
                 ),
                 // Tools
                 NatureTypeDetails(
                   title: "Tools",
-                  natureType: state.character?.tools,
+                  value: state.character?.tools,
                   state: state,
                 ),
               ],

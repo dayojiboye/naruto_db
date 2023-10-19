@@ -5,13 +5,13 @@ import 'package:naruto_db/widgets/details_heading_text.dart';
 
 class NatureTypeDetails extends StatefulWidget {
   const NatureTypeDetails({
-    required this.natureType,
+    required this.value,
     required this.title,
     required this.state,
     super.key,
   });
 
-  final List<String>? natureType;
+  final List<String>? value;
   final String title;
   final CharacterDetailsState state;
 
@@ -25,7 +25,7 @@ class _NatureTypeDetailsState extends State<NatureTypeDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.natureType == null || widget.natureType!.isEmpty
+    return widget.value == null || widget.value!.isEmpty
         ? const SizedBox()
         : Theme(
             data: Theme.of(context).copyWith(
@@ -61,14 +61,12 @@ class _NatureTypeDetailsState extends State<NatureTypeDetails> {
               },
               expandedCrossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ...widget.natureType!
-                    .map((type) => ListTile(
-                          contentPadding: const EdgeInsets.all(0),
-                          title: Text(
-                            type,
-                          ),
-                        ))
-                    .toList()
+                ...widget.value!.map((type) => ListTile(
+                      contentPadding: const EdgeInsets.all(0),
+                      title: Text(
+                        type,
+                      ),
+                    ))
               ],
             ),
           );

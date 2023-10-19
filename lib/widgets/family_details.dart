@@ -20,7 +20,8 @@ class _FamilyDetailsState extends State<FamilyDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.state.character?.family == null
+    return widget.state.character?.family == null ||
+            widget.state.character!.family!.isEmpty
         ? const SizedBox()
         : Theme(
             data: Theme.of(context).copyWith(
@@ -60,34 +61,8 @@ class _FamilyDetailsState extends State<FamilyDetails> {
                 // }
               },
               children: [
-                PersonalDetails(
-                  title: "Father",
-                  value: widget.state.character?.family?.father,
-                ),
-                PersonalDetails(
-                  title: "Mother",
-                  value: widget.state.character?.family?.mother,
-                ),
-                PersonalDetails(
-                  title: "Son",
-                  value: widget.state.character?.family?.son,
-                ),
-                PersonalDetails(
-                  title: "Daughter",
-                  value: widget.state.character?.family?.daughter,
-                ),
-                PersonalDetails(
-                  title: "Wife",
-                  value: widget.state.character?.family?.wife,
-                ),
-                PersonalDetails(
-                  title: "Adoptive Son",
-                  value: widget.state.character?.family?.adoptiveSon,
-                ),
-                PersonalDetails(
-                  title: "Godfather",
-                  value: widget.state.character?.family?.godfather,
-                ),
+                ...widget.state.character!.family!.entries
+                    .map((e) => PersonalDetails(title: e.key, value: e.value))
               ],
             ),
           );

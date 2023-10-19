@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naruto_db/core/models/characters/characters.dart';
+import 'package:naruto_db/utils/extensions.dart';
 import 'package:naruto_db/utils/margin.dart';
 import 'package:naruto_db/utils/theme.dart';
 
@@ -47,7 +48,7 @@ class PersonalDetails extends StatelessWidget {
                 leading: SizedBox(
                   width: 100,
                   child: Text(
-                    "$title:",
+                    "${title.toTitleCase()}:",
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       color: kTextPrimary,

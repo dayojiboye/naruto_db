@@ -9,7 +9,7 @@ final class CharacterDetailsState extends Equatable {
   final ViewStatus status;
   final Character? character;
 
-  bool get isCharacterEmpty => character != null;
+  bool get isCharacterEmpty => character == null;
 
   CharacterDetailsState copyWith({
     ViewStatus? status,

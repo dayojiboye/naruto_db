@@ -103,7 +103,8 @@ class Character extends Equatable {
   final List<String> jutsu;
   final PersonalClass? personal;
   final List<String> uniqueTraits;
-  final Family? family;
+  // final Family? family;
+  final Map<String, String>? family;
   final List<String> natureType;
   final RankClass? rank;
   final VoiceActors? voiceActors;
@@ -165,7 +166,11 @@ class Character extends Equatable {
       uniqueTraits: json["uniqueTraits"] == null
           ? []
           : List<String>.from(json["uniqueTraits"]!.map((x) => x)),
-      family: json["family"] == null ? null : Family.fromJson(json["family"]),
+      // family: json["family"] == null ? null : Family.fromJson(json["family"]),
+      family: json["family"] == null
+          ? null
+          : Map.from(json["family"])
+              .map((k, v) => MapEntry<String, String>(k, v)),
       natureType: json["natureType"] == null
           ? []
           : List<String>.from(json["natureType"]!.map((x) => x)),
@@ -306,7 +311,9 @@ class Character extends Equatable {
         // "personal": personal,
         "personal": personal?.toJson(),
         "uniqueTraits": uniqueTraits.map((x) => x).toList(),
-        "family": family?.toJson(),
+        // "family": family?.toJson(),
+        "family":
+            Map.from(family!).map((k, v) => MapEntry<String, dynamic>(k, v)),
         "natureType": natureType.map((x) => x).toList(),
         "rank": rank,
         "voiceActors": voiceActors?.toJson(),
@@ -693,63 +700,78 @@ class Weight extends Equatable {
       ];
 }
 
-class Family extends Equatable {
-  Family({
-    this.father,
-    this.mother,
-    this.son,
-    this.daughter,
-    this.wife,
-    this.adoptiveSon,
-    this.godfather,
-  });
+// class Family extends Equatable {
+//   Family({
+//     this.father,
+//     this.mother,
+//     this.son,
+//     this.daughter,
+//     this.wife,
+//     this.adoptiveSon,
+//     this.godfather,
+//     this.adoptiveFather,
+//     this.adoptiveBrother,
+//     this.adoptiveCousin,
+//   });
 
-  final String? father;
-  final String? mother;
-  final String? son;
-  final String? daughter;
-  final String? wife;
-  final String? adoptiveSon;
-  final String? godfather;
+//   final String? father;
+//   final String? mother;
+//   final String? son;
+//   final String? daughter;
+//   final String? wife;
+//   final String? adoptiveSon;
+//   final String? godfather;
+//   final String? adoptiveFather;
+//   final String? adoptiveBrother;
+//   final String? adoptiveCousin;
 
-  factory Family.fromJson(Map<String, dynamic> json) {
-    return Family(
-      father: json["father"],
-      mother: json["mother"],
-      son: json["son"],
-      daughter: json["daughter"],
-      wife: json["wife"],
-      adoptiveSon: json["adoptive son"],
-      godfather: json["godfather"],
-    );
-  }
+//   factory Family.fromJson(Map<String, dynamic> json) {
+//     return Family(
+//       father: json["father"],
+//       mother: json["mother"],
+//       son: json["son"],
+//       daughter: json["daughter"],
+//       wife: json["wife"],
+//       adoptiveSon: json["adoptive son"],
+//       godfather: json["godfather"],
+//       adoptiveFather: json["adoptive father"],
+//       adoptiveBrother: json["adoptive brother"],
+//       adoptiveCousin: json["adoptive cousin"],
+//     );
+//   }
 
-  Map<String, dynamic> toJson() => {
-        "Father": father,
-        "Mother": mother,
-        "Son": son,
-        "Daughter": daughter,
-        "Wife": wife,
-        "Adoptive Son": adoptiveSon,
-        "Godfather": godfather,
-      };
+//   Map<String, dynamic> toJson() => {
+//         "Father": father,
+//         "Mother": mother,
+//         "Son": son,
+//         "Daughter": daughter,
+//         "Wife": wife,
+//         "Adoptive Son": adoptiveSon,
+//         "Godfather": godfather,
+//         "Adoptive Father": adoptiveFather,
+//         "Adoptive Brother": adoptiveBrother,
+//         "Adoptive Cousin": adoptiveCousin,
+//       };
 
-  @override
-  String toString() {
-    return "Father: ${father ?? "N/A"}\nMother: ${mother ?? "N/A"}\nSon: ${son ?? "N/A"}\nDaughter: ${daughter ?? "N/A"}\nWife: ${wife ?? "N/A"}\nAdoptive Son: ${adoptiveSon ?? "N/A"}\nGodfather: ${godfather ?? "N/A"}";
-  }
+//   @override
+//   String toString() {
+//     return "Father: ${father ?? "N/A"}\nMother: ${mother ?? "N/A"}\nSon: ${son ?? "N/A"}\nDaughter: ${daughter ?? "N/A"}\nWife: ${wife ?? "N/A"}\nAdoptive Son: ${adoptiveSon ?? "N/A"}\nGodfather: ${godfather ?? "N/A"}\nAdoptiveFather: ${adoptiveFather ?? "N/A"}\nAdoptiveBrother: ${adoptiveBrother ?? "N/A"}\nAdoptiveCousin: ${adoptiveCousin ?? "N/A"}";
+//   }
 
-  @override
-  List<Object?> get props => [
-        father,
-        mother,
-        son,
-        daughter,
-        wife,
-        adoptiveSon,
-        godfather,
-      ];
-}
+//   @override
+//   List<Object?> get props => [
+//         father,
+//         mother,
+//         son,
+//         daughter,
+//         wife,
+//         adoptiveSon,
+//         godfather,
+//         adoptiveFather,
+//         adoptiveBrother,
+//         adoptiveCousin,
+//       ];
+// }
 
 class RankClass extends Equatable {
   RankClass({

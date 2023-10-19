@@ -63,7 +63,7 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
                 );
 
               case ViewStatus.success:
-                if (!state.isCharacterEmpty) {
+                if (state.isCharacterEmpty) {
                   return const Center(
                     child: Text(
                       "No Character Found",
