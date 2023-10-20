@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:naruto_db/core/blocs/character_details/character_details_bloc.dart';
@@ -87,9 +88,12 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
                 );
 
               case ViewStatus.initial:
-                return const Center(
-                  child: CupertinoActivityIndicator(
-                    radius: 16,
+                return Center(
+                  child: CircularProgressIndicator.adaptive(
+                    backgroundColor: Platform.isAndroid ? kWhite : null,
+                    valueColor: Platform.isAndroid
+                        ? const AlwaysStoppedAnimation(kPrimary)
+                        : null,
                   ),
                 );
             }
